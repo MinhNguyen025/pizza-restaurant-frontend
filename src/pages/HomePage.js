@@ -15,6 +15,7 @@ function HomePage() {
         <p>We serve the best pizza in town!</p>
       </header>
       <section className="hero">
+        <h1>Delicious Pizza</h1>
         <p>
           Enjoy our delicious pizzas from the comfort of your home 
           or dine in with us.
