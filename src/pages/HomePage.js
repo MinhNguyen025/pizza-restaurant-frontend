@@ -1,27 +1,28 @@
 // src/pages/HomePage.js
 import React from 'react';
+import Banner from '../components/Banner';
+import Features from '../components/Features';
+import MenuSection from '../components/MenuSection';
+import Testimonials from '../components/Testimonials';
 
 function HomePage() {
-  const headerStyle = {
-    backgroundColor: '#ffefef',
-    padding: '20px',
-    textAlign: 'center',
-  };
-
   return (
-    <div className="home-page">
-      <header style={headerStyle}>
-        <h1>Welcome to Pizza Restaurant</h1>
-        <p>We serve the best pizza in town!</p>
-      </header>
-      <section className="hero">
-        <h1>Delicious Pizza</h1>
-        <p>
-          Enjoy our delicious pizzas from the comfort of your home 
-          or dine in with us.
-        </p>
-      </section>
-    </div>
+    <main>
+      {/* Banner */}
+      <Banner />
+
+      {/* Features */}
+      <Features />
+
+      {/* Menu Section */}
+      <MenuSection />
+
+      {/* Testimonials (đỏ) */}
+      <Testimonials />
+
+      {/* Bạn có thể thêm phần "Begin Your Pizza Day" hoặc Form đặt hàng 
+          như thiết kế Figma vào đây (tạo component riêng) */}
+    </main>
   );
 }
 
