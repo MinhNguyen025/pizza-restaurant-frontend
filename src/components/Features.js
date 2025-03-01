@@ -85,6 +85,7 @@ const styles = {
   section: {
     backgroundColor: '#fff',
     padding: '3rem 1rem',
+    height: '500px',
   },
   container: {
     maxWidth: '1200px',
