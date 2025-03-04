@@ -93,7 +93,7 @@ const styles = {
     color: '#fff',
     border: 'none',
     padding: '0.8rem 1.5rem',
-    borderRadius: '20px',
+    borderRadius: '15px',
     cursor: 'pointer',
     fontSize: '1rem',
     fontWeight: '600',

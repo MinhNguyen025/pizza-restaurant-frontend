@@ -127,7 +127,7 @@ const styles = {
     position: 'relative',
     width: '150px',    // Kích thước khung chung
     height: '150px',
-    margin: '0 auto', // Căn giữa wrapper
+    margin: '0 auto',
     marginBottom: '1rem',
   },
   trayImage: {
@@ -146,7 +146,7 @@ const styles = {
     width: '150px',
     height: '150px',
     objectFit: 'contain',
-    zIndex: 1,        // Pizza ở trên
+    zIndex: 1,
   },
 
   cardName: {
