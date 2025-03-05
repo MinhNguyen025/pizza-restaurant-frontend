@@ -96,6 +96,10 @@ Thư mục `build/` chứa file tĩnh để deploy lên server.
 Figma thiết kế giao diện có thể xem tại: [Figma Pizza-Restaurant](https://www.figma.com/design/ODcT2cvfSKL1ezbZoHvfiL/Pizza-Restaurant?node-id=168-1215&p=f&t=lPywaF4B5OzUny2Q-0)
 
 ---
+## **Quản lý công việc**
+Theo dõi tiến độ dự án trên Jira: [Jira Pizza-Restaurant](https://nguyendminh025.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-4)
+
+---
 
 ## **Thông tin liên hệ**
 - **Tác giả**: Nguyễn Duy Minh 
