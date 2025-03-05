@@ -1,70 +1,110 @@
-# Getting Started with Create React App
+# Pizza-Restaurant (Frontend)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![image](https://github.com/user-attachments/assets/fa6609e3-2a38-41e5-9cd3-b0c87f55acaf)
 
-## Available Scripts
 
-In the project directory, you can run:
+Dự án **Pizza-Restaurant** là phần frontend (React) cho hệ thống quản lý và đặt món pizza.  
+Người dùng có thể:
+- Xem thông tin nhà hàng, menu pizza
+- Đặt món, quét QR tại bàn
+- Theo dõi các khuyến mãi, sự kiện
 
-### `npm start`
+## **Mục Lục**
+1. [Giới thiệu](#giới-thiệu)
+2. [Công nghệ sử dụng](#công-nghệ-sử-dụng)
+3. [Cấu trúc thư mục](#cấu-trúc-thư-mục)
+4. [Cài đặt và chạy](#cài-đặt-và-chạy)
+5. [Thiết kế giao diện](#thiết-kế-giao-diện)
+6. [Thông tin liên hệ](#thông-tin-liên-hệ)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## **Giới thiệu**
+Dự án này được xây dựng bằng **React.js**, cung cấp giao diện cho khách hàng truy cập website để đặt món, xem thông tin, và cho quản trị viên quản lý (nếu có trang admin).  
+Ngoài ra, dự án còn tích hợp tính năng quét mã QR tại bàn để khách hàng tự order nhanh chóng.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## **Công nghệ sử dụng**
+- **React** (create-react-app)
+- **React Router** (điều hướng)
+- **Tailwind CSS** hoặc **CSS/SCSS** (tuỳ chọn)
+- **Axios** (gọi API)
+- **Redux** (nếu cần quản lý state phức tạp)
+- **react-icons**, **antd**, v.v. (nếu bạn dùng thêm thư viện UI)
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## **Cấu trúc thư mục**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```plaintext
+pizza-restaurant-frontend/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/
+│   │   └── images/ (chứa ảnh, icon)
+│   ├── components/ (chứa các component dùng chung)
+│   ├── pages/ (mỗi file là một trang)
+│   ├── services/ (gọi API)
+│   ├── App.js
+│   ├── index.js
+│   └── ...
+├── package.json
+├── README.md
+└── ...
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- `/public`: Chứa file index.html gốc, favicon, v.v.
+- `/src/assets/images`: Ảnh tĩnh (logo, icon, svg, v.v.)
+- `/src/components`: Các component tái sử dụng (Header, Footer, Banner…)
+- `/src/pages`: Mỗi trang React (HomePage, MenuPage, AboutPage…)
+- `/src/services`: Code gọi API (axios…)
+- `App.js`: Khai báo route, layout chính
+- `index.js`: Điểm khởi chạy React
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## **Cài đặt và chạy**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Clone repo (hoặc tải zip):
+```bash
+git clone https://github.com/your-username/pizza-restaurant-frontend.git
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Cài đặt phụ thuộc:
+```bash
+cd pizza-restaurant-frontend
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Chạy dev server:
+```bash
+npm start
+```
+Ứng dụng sẽ chạy tại [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+### Build (sản phẩm deploy):
+```bash
+npm run build
+```
+Thư mục `build/` chứa file tĩnh để deploy lên server.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## **Thiết kế giao diện**
+Figma thiết kế giao diện có thể xem tại: [Figma Pizza-Restaurant](https://www.figma.com/design/ODcT2cvfSKL1ezbZoHvfiL/Pizza-Restaurant?node-id=168-1215&p=f&t=lPywaF4B5OzUny2Q-0)
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## **Thông tin liên hệ**
+- **Tác giả**: Nguyễn Duy Minh 
+- **Email**: contact@pizza-restaurant.com  
 
-### Analyzing the Bundle Size
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## **License**
+Mô tả giấy phép (MIT, Apache 2.0, v.v.) hoặc dự án private tuỳ theo nhu cầu.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
