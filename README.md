@@ -1,114 +1,161 @@
 # Pizza-Restaurant (Frontend)
 
-![image](https://github.com/user-attachments/assets/fa6609e3-2a38-41e5-9cd3-b0c87f55acaf)
-
-
-Dự án **Pizza-Restaurant** là phần frontend (React) cho hệ thống quản lý và đặt món pizza.  
-Người dùng có thể:
-- Xem thông tin nhà hàng, menu pizza
-- Đặt món, quét QR tại bàn
-- Theo dõi các khuyến mãi, sự kiện
+Dự án **Pizza-Restaurant** là phần frontend (React) cho hệ thống quản lý và đặt món pizza, được xây dựng theo yêu cầu từ tài liệu SRS. Hệ thống bao gồm 3 giao diện chính: Giao diện người dùng (user), Giao diện quản trị (admin), và Giao diện di động (mobile).
 
 ## **Mục Lục**
 1. [Giới thiệu](#giới-thiệu)
 2. [Công nghệ sử dụng](#công-nghệ-sử-dụng)
-3. [Cấu trúc thư mục](#cấu-trúc-thư-mục)
+3. [Cấu trúc thư mục](#cập-nhật-cấu-trúc-thư-mục-đầy-đủ)
 4. [Cài đặt và chạy](#cài-đặt-và-chạy)
-5. [Thiết kế giao diện](#thiết-kế-giao-diện)
-6. [Thông tin liên hệ](#thông-tin-liên-hệ)
+5. [Giao diện người dùng](#giao-diện-người-dùng-user)
+6. [Giao diện quản trị (Admin)](#giao-diện-quản-trị-admin-interface)
+7. [Giao diện Mobile](#giao-diện-mobile--responsive)
+8. [Thiết kế giao diện](#thiết-kế-giao-diện)
+9. [Quản lý công việc](#quản-lý-công-việc)
+10. [Thông tin liên hệ](#thông-tin-liên-hệ)
+11. [License](#license)
 
 ---
 
 ## **Giới thiệu**
-Dự án này được xây dựng bằng **React.js**, cung cấp giao diện cho khách hàng truy cập website để đặt món, xem thông tin, và cho quản trị viên quản lý (nếu có trang admin).  
-Ngoài ra, dự án còn tích hợp tính năng quét mã QR tại bàn để khách hàng tự order nhanh chóng.
+Dự án này được xây dựng bằng **React.js**, cung cấp giao diện cho khách hàng truy cập website để đặt món, xem thông tin, và cho quản trị viên quản lý. Ngoài ra, tích hợp tính năng quét mã QR tại bàn để khách hàng tự order nhanh chóng. Giao diện thân thiện, hỗ trợ responsive cho mọi thiết bị.
 
 ---
 
 ## **Công nghệ sử dụng**
 - **React** (create-react-app)
 - **React Router** (điều hướng)
-- **Tailwind CSS** hoặc **CSS/SCSS** (tuỳ chọn)
+- **Tailwind CSS** hoặc **SCSS**
 - **Axios** (gọi API)
-- **Redux** (nếu cần quản lý state phức tạp)
-- **react-icons**, **antd**, v.v. (nếu bạn dùng thêm thư viện UI)
+- **Redux Toolkit** (state management)
+- **Ant Design**, **react-icons**, v.v.
 
 ---
 
-## **Cấu trúc thư mục**
-
+## 📁 Cập nhật cấu trúc thư mục đầy đủ:
 ```plaintext
 pizza-restaurant-frontend/
 ├── public/
 │   └── index.html
 ├── src/
-│   ├── assets/
-│   │   └── images/ (chứa ảnh, icon)
-│   ├── components/ (chứa các component dùng chung)
-│   ├── pages/ (mỗi file là một trang)
-│   ├── services/ (gọi API)
-│   ├── App.js
-│   ├── index.js
-│   └── ...
+│   ├── assets/images/            # Logo, ảnh, icon
+│   ├── components/               # Common components
+│   ├── admincomponent/           # Component cho quản trị viên
+│   ├── usercomponent/            # Component cho khách hàng
+│   ├── mobilecomponent/          # Component hiển thị mobile
+│   ├── pages/
+│   │   ├── adminpage/            # Trang dành cho admin
+│   │   ├── userpage/             # Trang dành cho khách hàng
+│   │   └── mobilepage/           # Trang di động
+│   ├── routes/                   # Cấu hình route React
+│   ├── services/                 # API service (Axios)
+│   ├── unittest/                 # Unit test
+│   ├── App.js                    # Layout chính
+│   └── index.js                  # Entry point
+├── tests/                        # Tự động kiểm thử
+├── .env
 ├── package.json
-├── README.md
-└── ...
+└── README.md
 ```
-
-- `/public`: Chứa file index.html gốc, favicon, v.v.
-- `/src/assets/images`: Ảnh tĩnh (logo, icon, svg, v.v.)
-- `/src/components`: Các component tái sử dụng (Header, Footer, Banner…)
-- `/src/pages`: Mỗi trang React (HomePage, MenuPage, AboutPage…)
-- `/src/services`: Code gọi API (axios…)
-- `App.js`: Khai báo route, layout chính
-- `index.js`: Điểm khởi chạy React
 
 ---
 
 ## **Cài đặt và chạy**
 
-### Clone repo (hoặc tải zip):
 ```bash
 git clone https://github.com/your-username/pizza-restaurant-frontend.git
-```
-
-### Cài đặt phụ thuộc:
-```bash
 cd pizza-restaurant-frontend
 npm install
-```
-
-### Chạy dev server:
-```bash
 npm start
 ```
-Ứng dụng sẽ chạy tại [http://localhost:3000](http://localhost:3000).
+Ứng dụng chạy tại [http://localhost:3000](http://localhost:3000)
 
-### Build (sản phẩm deploy):
+### Build (triển khai production):
 ```bash
 npm run build
 ```
-Thư mục `build/` chứa file tĩnh để deploy lên server.
 
 ---
 
-## **Thiết kế giao diện**
-Figma thiết kế giao diện có thể xem tại: [Figma Pizza-Restaurant](https://www.figma.com/design/ODcT2cvfSKL1ezbZoHvfiL/Pizza-Restaurant?node-id=168-1215&p=f&t=lPywaF4B5OzUny2Q-0)
+## 👤 Giao diện người dùng (User)
+![image](https://github.com/user-attachments/assets/cd0461c2-be66-495f-b439-937ab4114dee)
+
+### ✔️ Tính năng:
+- Đặt bàn trực tuyến, chọn thời gian, số người
+- Quét mã QR tại bàn để truy cập thực đơn
+- Xem món ăn, chọn món, thêm vào giỏ, xác nhận đặt hàng
+- Nhận thông báo xác nhận, trạng thái đơn hàng
+- Thanh toán bằng các phương thức: tiền mặt, thẻ, ví điện tử
+
+### 🔗 Dựa trên các Use Case:
+- UC.01: Đặt bàn
+- UC.02: Đặt món
+
+**Thư mục liên quan**:
+```
+├── src/usercomponent/
+├── src/pages/userpage/
+```
 
 ---
-## **Quản lý công việc**
-Theo dõi tiến độ dự án trên Jira: [Jira Pizza-Restaurant](https://nguyendminh025.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-4)
+
+## ✨ Giao diện quản trị (Admin Interface)
+![image](https://github.com/user-attachments/assets/84dbd178-e32c-4d79-be34-4d9a938e6d15)
+
+### ✔️ Tính năng chính:
+- Dashboard tổng quan: doanh thu, đơn hàng, khách, trạng thái bàn
+- Quản lý thực đơn: thêm/sửa/xóa món
+- Thanh toán: xác nhận hóa đơn, in hóa đơn, cập nhật trạng thái bàn
+- Xem và xuất báo cáo PDF/Excel
+
+### 🔗 Dựa trên các Use Case:
+- UC.03: Quản lý thực đơn
+- UC.04: Thanh toán hóa đơn
+- UC.05: Báo cáo thống kê
+
+**Thư mục liên quan**:
+```
+├── src/admincomponent/
+├── src/pages/adminpage/
+```
 
 ---
 
-## **Thông tin liên hệ**
-- **Tác giả**: Nguyễn Duy Minh 
-- **Email**: contact@pizza-restaurant.com  
+## 📱 Giao diện Mobile / Responsive
+![image](https://github.com/user-attachments/assets/0973af57-956f-4c48-86d7-b32a07d484aa)
+
+### ✔️ Tính năng hỗ trợ mobile:
+- Hỗ trợ QR Code scanning từ thiết bị di động
+- Thao tác mượt mà qua touch UI
+- Navigation bar cố định cho thao tác nhanh
+- Responsive cho mọi độ phân giải, tối ưu UX
+
+**Thư mục liên quan**:
+```
+├── src/mobilecomponent/
+├── src/pages/mobilepage/
+```
 
 ---
 
-## **License**
-Mô tả giấy phép (MIT, Apache 2.0, v.v.) hoặc dự án private tuỳ theo nhu cầu.
+## 🎨 Thiết kế giao diện
+Thiết kế chuẩn UX/UI trên Figma:
+👉 [Figma Pizza-Restaurant](https://www.figma.com/design/ODcT2cvfSKL1ezbZoHvfiL/Pizza-Restaurant?node-id=168-1215&p=f&t=lPywaF4B5OzUny2Q-0)
 
+---
 
+## 📌 Quản lý công việc
+Dự án được theo dõi qua Jira:
+👉 [Jira Pizza-Restaurant](https://nguyendminh025.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-4)
+
+---
+
+## 📧 Thông tin liên hệ
+- **Tác giả**: Nguyễn Duy Minh  
+- **Email**: contact@pizza-restaurant.com
+
+---
+
+## 📄 License
+Dự án thuộc quyền sở hữu cá nhân. Có thể áp dụng license MIT hoặc private tùy vào mục đích sử dụng.
 
