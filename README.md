@@ -1,161 +1,319 @@
-# Pizza-Restaurant (Frontend)
 
-Dự án **Pizza-Restaurant** là phần frontend (React) cho hệ thống quản lý và đặt món pizza, được xây dựng theo yêu cầu từ tài liệu SRS. Hệ thống bao gồm 3 giao diện chính: Giao diện người dùng (user), Giao diện quản trị (admin), và Giao diện di động (mobile).
+# README: Hướng Dẫn Hoàn Thành Xuất Sắc Bài Kiểm Tra Lập Trình C (90 phút)
 
-## **Mục Lục**
-1. [Giới thiệu](#giới-thiệu)
-2. [Công nghệ sử dụng](#công-nghệ-sử-dụng)
-3. [Cấu trúc thư mục](#cập-nhật-cấu-trúc-thư-mục-đầy-đủ)
-4. [Cài đặt và chạy](#cài-đặt-và-chạy)
-5. [Giao diện người dùng](#giao-diện-người-dùng-user)
-6. [Giao diện quản trị (Admin)](#giao-diện-quản-trị-admin-interface)
-7. [Giao diện Mobile](#giao-diện-mobile--responsive)
-8. [Thiết kế giao diện](#thiết-kế-giao-diện)
-9. [Quản lý công việc](#quản-lý-công-việc)
-10. [Thông tin liên hệ](#thông-tin-liên-hệ)
-11. [License](#license)
+## Mục lục
 
----
-
-## **Giới thiệu**
-Dự án này được xây dựng bằng **React.js**, cung cấp giao diện cho khách hàng truy cập website để đặt món, xem thông tin, và cho quản trị viên quản lý. Ngoài ra, tích hợp tính năng quét mã QR tại bàn để khách hàng tự order nhanh chóng. Giao diện thân thiện, hỗ trợ responsive cho mọi thiết bị.
+1. [Lộ trình thực hiện đề thi](#lộ-trình-thực-hiện-đề-thi)  
+2. [Khung code cơ bản](#khung-code-cơ-bản)  
+3. [Chi tiết từng câu](#chi-tiết-từng-câu)  
+   - [Câu 1: Mảng số nguyên, tổng chẵn & liệt kê > 5](#câu-1-mảng-số-nguyên-tổng-chẵn--liệt-kê--5)  
+   - [Câu 2: Hàm `tong()`](#câu-2-hàm-tong)  
+   - [Câu 3: Đếm chữ cái & chữ số trong chuỗi](#câu-3-đếm-chữ-cái--chữ-số-trong-chuỗi)  
+   - [Câu 4: Đệ quy tính giai thừa](#câu-4-đệ-quy-tính-giai-thừa)  
+   - [Câu 5: Struct sản phẩm + File I/O](#câu-5-struct-sản-phẩm--file-io)  
+   - [Câu 6: Menu gọi các hàm](#câu-6-menu-gọi-các-hàm)  
+4. [Định nghĩa và giải thích `#define`](#định-nghĩa-và-giải-thích-define)  
+5. [Checklist nộp bài](#checklist-nộp-bài)  
 
 ---
 
-## **Công nghệ sử dụng**
-- **React** (create-react-app)
-- **React Router** (điều hướng)
-- **Tailwind CSS** hoặc **SCSS**
-- **Axios** (gọi API)
-- **Redux Toolkit** (state management)
-- **Ant Design**, **react-icons**, v.v.
+## Lộ trình thực hiện đề thi
+
+| Thời gian     | Công việc                                                                 |
+|---------------|----------------------------------------------------------------------------|
+| 0–10 phút     | Đọc đề, gạch chân đầu vào/đầu ra/quy ước. Khởi tạo file, include thư viện. |
+| 10–65 phút    | Viết và biên dịch riêng lẻ các hàm theo độ khó: Câu 2 → 1 → 3 → 4 → 5.      |
+| 65–80 phút    | Ghép khung menu (Câu 6), kiểm tra logic `switch` + `break`.               |
+| 80–87 phút    | Chạy thử từng case, test giá trị biên.                                     |
+| 87–90 phút    | Thêm comment đầu file (tên, lớp), biên dịch cuối, nộp bài.                |
 
 ---
 
-## 📁 Cập nhật cấu trúc thư mục đầy đủ:
-```plaintext
-pizza-restaurant-frontend/
-├── public/
-│   └── index.html
-├── src/
-│   ├── assets/images/            # Logo, ảnh, icon
-│   ├── components/               # Common components
-│   ├── admincomponent/           # Component cho quản trị viên
-│   ├── usercomponent/            # Component cho khách hàng
-│   ├── mobilecomponent/          # Component hiển thị mobile
-│   ├── pages/
-│   │   ├── adminpage/            # Trang dành cho admin
-│   │   ├── userpage/             # Trang dành cho khách hàng
-│   │   └── mobilepage/           # Trang di động
-│   ├── routes/                   # Cấu hình route React
-│   ├── services/                 # API service (Axios)
-│   ├── unittest/                 # Unit test
-│   ├── App.js                    # Layout chính
-│   └── index.js                  # Entry point
-├── tests/                        # Tự động kiểm thử
-├── .env
-├── package.json
-└── README.md
+## Khung code cơ bản
+
+```c
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+#define MAX_N    50
+#define MAX_STR  100
+#define MAX_PROD 30
+
+/* Prototypes */
+void cau1(void);
+void cau2(void);
+void cau3(void);
+void cau4(void);
+void cau5(void);
+
+int main(void) {
+    int choice;
+    do {
+        printf("\n===== MENU =====\n");
+        printf("1. Câu 1\n2. Câu 2\n3. Câu 3\n4. Câu 4\n5. Câu 5\n0. Thoát\n");
+        printf("Chọn: ");
+        if (scanf("%d", &choice) != 1) {
+            while (getchar() != '\n');
+            continue;
+        }
+        switch (choice) {
+            case 1: cau1(); break;
+            case 2: cau2(); break;
+            case 3: cau3(); break;
+            case 4: cau4(); break;
+            case 5: cau5(); break;
+            case 0: printf("Thoát chương trình!\n"); break;
+            default: printf("Lựa chọn không hợp lệ, vui lòng nhập lại.\n");
+        }
+    } while (choice != 0);
+    return 0;
+}
 ```
 
 ---
 
-## **Cài đặt và chạy**
+## Chi tiết từng câu
 
-```bash
-git clone https://github.com/your-username/pizza-restaurant-frontend.git
-cd pizza-restaurant-frontend
-npm install
-npm start
-```
-Ứng dụng chạy tại [http://localhost:3000](http://localhost:3000)
+### Câu 1: Mảng số nguyên, tổng chẵn & liệt kê > 5
 
-### Build (triển khai production):
-```bash
-npm run build
+```c
+#include <stdio.h>      // ①
+#define MAX 50          // ②
+
+int main(void) {        // ③
+    int n, a[MAX];      // ④
+    int sumEven = 0;    // ⑤
+
+    printf("Nhap n (1–50): ");
+    scanf("%d", &n);    // ⑥
+    if (n <= 0 || n > MAX) return 0;   // ⑦
+
+    for (int i = 0; i < n; ++i) {      // ⑧
+        printf("a[%d] = ", i);
+        scanf("%d", &a[i]);
+        if (a[i] % 2 == 0)             // ⑨
+            sumEven += a[i];
+    }
+
+    printf("Tong chan = %d\n", sumEven);
+
+    printf("Cac phan tu > 5: ");
+    for (int i = 0; i < n; ++i)
+        if (a[i] > 5) printf("%d ", a[i]);
+    puts("");                          // ⑩
+    return 0;                          // ⑪
+}
 ```
+
+| Mã  | Ký hiệu                  | Giải thích                                                                                 |
+|-----|--------------------------|-------------------------------------------------------------------------------------------|
+| ①   | `#include <stdio.h>`     | Nạp thư viện chuẩn chứa `printf`, `scanf`. Dấu `<...>` tìm trong thư mục hệ thống.        |
+| ②   | `#define MAX 50`         | Định nghĩa macro `MAX` giá trị 50. Tất cả `MAX` trong code được thay bằng `50`.           |
+| ③   | `int main(void)`         | Hàm chính – nơi bắt đầu chương trình. Trả về `int`, `void` nghĩa không nhận tham số.     |
+| ④   | `int n, a[MAX];`         | Khai báo `n` và mảng `a` có `MAX` phần tử kiểu `int`.                                     |
+| ⑤   | `int sumEven = 0;`       | Biến tổng số chẵn, khởi tạo bằng 0.                                                       |
+| ⑥   | `scanf("%d", &n);`       | Đọc số nguyên vào `n`. Dấu `&` lấy địa chỉ biến để ghi dữ liệu.                           |
+| ⑦   | `if (...) return 0;`     | Kiểm tra `n` hợp lệ; nếu sai thoát chương trình, trả mã 0.                                 |
+| ⑧   | `for (int i=0; i<n; ++i) | Vòng lặp duyệt mảng từ `i=0` đến `i<n`.                                                    |
+| ⑨   | `a[i] % 2 == 0`          | Toán tử chia lấy dư `%`. Thỏa mãn khi phần dư bằng 0 ⇒ số chẵn.                           |
+| ⑩   | `puts("")`               | In xuống dòng nhanh, tương đương `printf("\n")`.                                         |
+| ⑪   | `return 0;`              | Kết thúc `main`, trả mã 0 cho hệ điều hành.                                               |
 
 ---
 
-## 👤 Giao diện người dùng (User)
-![image](https://github.com/user-attachments/assets/cd0461c2-be66-495f-b439-937ab4114dee)
+### Câu 2: Hàm `tong()`
 
-### ✔️ Tính năng:
-- Đặt bàn trực tuyến, chọn thời gian, số người
-- Quét mã QR tại bàn để truy cập thực đơn
-- Xem món ăn, chọn món, thêm vào giỏ, xác nhận đặt hàng
-- Nhận thông báo xác nhận, trạng thái đơn hàng
-- Thanh toán bằng các phương thức: tiền mặt, thẻ, ví điện tử
+```c
+#include <stdio.h>
 
-### 🔗 Dựa trên các Use Case:
-- UC.01: Đặt bàn
-- UC.02: Đặt món
+int tong(int a, int b) {      // ①
+    return a + b;             // ②
+}
 
-**Thư mục liên quan**:
+int main(void) {
+    int x, y;
+    printf("Nhap hai so: ");
+    scanf("%d%d", &x, &y);    // ③
+    printf("Tong = %d\n", tong(x, y));  // ④
+    return 0;
+}
 ```
-├── src/usercomponent/
-├── src/pages/userpage/
-```
+
+| Mã  | Giải thích                                                         |
+|-----|--------------------------------------------------------------------|
+| ①   | Định nghĩa hàm `tong` trả về tổng hai số nguyên.                   |
+| ②   | Toán tử `+` cộng `a` và `b`, trả kết quả.                           |
+| ③   | Nhập hai số nguyên liên tiếp, cách nhau khoảng trắng hoặc xuống dòng. |
+| ④   | Gọi hàm `tong(x, y)` và in kết quả với định dạng `%d`.             |
 
 ---
 
-## ✨ Giao diện quản trị (Admin Interface)
-![image](https://github.com/user-attachments/assets/84dbd178-e32c-4d79-be34-4d9a938e6d15)
+### Câu 3: Đếm chữ cái & chữ số trong chuỗi
 
-### ✔️ Tính năng chính:
-- Dashboard tổng quan: doanh thu, đơn hàng, khách, trạng thái bàn
-- Quản lý thực đơn: thêm/sửa/xóa món
-- Thanh toán: xác nhận hóa đơn, in hóa đơn, cập nhật trạng thái bàn
-- Xem và xuất báo cáo PDF/Excel
+```c
+#include <stdio.h>
+#include <ctype.h>                 // ①
+#define MAX 100
 
-### 🔗 Dựa trên các Use Case:
-- UC.03: Quản lý thực đơn
-- UC.04: Thanh toán hóa đơn
-- UC.05: Báo cáo thống kê
+int main(void) {
+    char s[MAX + 1];               // ②
+    int letters = 0, digits = 0;
 
-**Thư mục liên quan**:
-```
-├── src/admincomponent/
-├── src/pages/adminpage/
-```
+    getchar();                     // ③
+    printf("Nhap chuoi: ");
+    fgets(s, sizeof(s), stdin);    // ④
 
----
-
-## 📱 Giao diện Mobile / Responsive
-![image](https://github.com/user-attachments/assets/0973af57-956f-4c48-86d7-b32a07d484aa)
-
-### ✔️ Tính năng hỗ trợ mobile:
-- Hỗ trợ QR Code scanning từ thiết bị di động
-- Thao tác mượt mà qua touch UI
-- Navigation bar cố định cho thao tác nhanh
-- Responsive cho mọi độ phân giải, tối ưu UX
-
-**Thư mục liên quan**:
-```
-├── src/mobilecomponent/
-├── src/pages/mobilepage/
+    for (int i = 0; s[i] != '\0'; ++i) {    // ⑤
+        if (isalpha((unsigned char)s[i]))    // ⑥
+            ++letters;
+        else if (isdigit((unsigned char)s[i]))
+            ++digits;
+    }
+    printf("Chu cai = %d\nChu so  = %d\n", letters, digits);
+    return 0;
+}
 ```
 
----
-
-## 🎨 Thiết kế giao diện
-Thiết kế chuẩn UX/UI trên Figma:
-👉 [Figma Pizza-Restaurant](https://www.figma.com/design/ODcT2cvfSKL1ezbZoHvfiL/Pizza-Restaurant?node-id=168-1215&p=f&t=lPywaF4B5OzUny2Q-0)
-
----
-
-## 📌 Quản lý công việc
-Dự án được theo dõi qua Jira:
-👉 [Jira Pizza-Restaurant](https://nguyendminh025.atlassian.net/jira/software/projects/SCRUM/boards/1/backlog?selectedIssue=SCRUM-4)
+| Ký hiệu  | Vai trò                                                                                  |
+|----------|------------------------------------------------------------------------------------------|
+| ①        | `#include <ctype.h>`: Thư viện kiểm tra ký tự (`isalpha`, `isdigit`).                   |
+| ②        | Mảng `s` đủ 101 ô: 100 ký tự + 1 kí tự kết thúc `\0`.                                   |
+| ③        | `getchar()` loại newline còn sót lại do `scanf` lần trước.                              |
+| ④        | `fgets` đọc nguyên dòng, kể cả khoảng trắng, dừng khi gặp `\n` hoặc hết 100 ký tự.       |
+| ⑤        | Duyệt tới ký tự kết thúc chuỗi `\0`.                                                   |
+| ⑥        | `isalpha`, `isdigit` trả true nếu ký tự là chữ cái/số. Ép `unsigned char` tránh lỗi.    |
 
 ---
 
-## 📧 Thông tin liên hệ
-- **Tác giả**: Nguyễn Duy Minh  
-- **Email**: contact@pizza-restaurant.com
+### Câu 4: Đệ quy tính giai thừa
+
+```c
+#include <stdio.h>
+
+int giaithua(int n) {           // ①
+    if (n <= 1)                  // ②
+        return 1;
+    return n * giaithua(n - 1);  // ③
+}
+
+int main(void) {
+    int n;
+    printf("Nhap n (0–10): ");
+    scanf("%d", &n);
+    if (n < 0 || n > 10) return 0;
+    printf("%d! = %d\n", n, giaithua(n));  // ④
+    return 0;
+}
+```
+
+| Mã  | Ý nghĩa                                                                                             |
+|-----|-----------------------------------------------------------------------------------------------------|
+| ①   | Hàm đệ quy `giaithua`, gọi lại chính nó.                                                            |
+| ②   | Điều kiện dừng (base case): 0! và 1! đều bằng 1.                                                   |
+| ③   | Công thức giai thừa: `n! = n × (n−1)!`.                                                             |
+| ④   | Gọi hàm `giaithua(n)` và in kết quả.                                                               |
 
 ---
 
-## 📄 License
-Dự án thuộc quyền sở hữu cá nhân. Có thể áp dụng license MIT hoặc private tùy vào mục đích sử dụng.
+### Câu 5: Struct sản phẩm + File I/O
 
+```c
+#include <stdio.h>
+#include <string.h>
+#define MAX_P 30
+#define MAX_S 100
+
+typedef struct {                  // ①
+    char ten[MAX_S];
+    char ma[50];
+} Product;
+
+int main(void) {
+    int n; Product p[MAX_P];
+    printf("Nhap so SP (<=30): ");
+    scanf("%d", &n);               // ②
+    getchar();                     // Loại newline
+
+    for (int i = 0; i < n; ++i) {
+        printf("Ten SP %d: ", i + 1);
+        fgets(p[i].ten, sizeof(p[i].ten), stdin);
+        p[i].ten[strcspn(p[i].ten, "\n")] = '\0';  // ③
+        printf("Ma  SP %d: ", i + 1);
+        fgets(p[i].ma, sizeof(p[i].ma), stdin);
+        p[i].ma[strcspn(p[i].ma, "\n")] = '\0';
+    }
+
+    FILE *fp = fopen("danhsach.txt", "w");         // ④
+    for (int i = 0; i < n; ++i)
+        fprintf(fp, "%s|%s\n", p[i].ten, p[i].ma); // ⑤
+    fclose(fp);
+
+    puts("\nDoc lai file:");
+    fp = fopen("danhsach.txt", "r");
+    char line[200]; int idx = 1;
+    while (fgets(line, sizeof(line), fp)) {        // ⑥
+        char *bar = strchr(line, '|');             // ⑦
+        if (bar) {
+            *bar = '\0';
+            printf("%2d. %-20s | %s", idx++, line, bar + 1);
+        }
+    }
+    fclose(fp);
+    return 0;
+}
+```
+
+| Mã  | Giải thích                                                                                   |
+|-----|----------------------------------------------------------------------------------------------|
+| ①   | `typedef struct { … } Product;` – định nghĩa kiểu `Product` với 2 chuỗi.                    |
+| ②   | Nhập `n`, số lượng sản phẩm, kiểm tra tương tự Câu 1.                                        |
+| ③   | `strcspn` tìm vị trí `\n`, thay bằng `\0` để loại newline.                                 |
+| ④   | `fopen("danhsach.txt", "w")` – mở file để ghi mới (xóa cũ).                                  |
+| ⑤   | `fprintf` ghi lần lượt `ten|ma` mỗi dòng.                                                     |
+| ⑥   | `fgets` đọc từng dòng từ file.                                                              |
+| ⑦   | `strchr(line, '|')` tìm dấu phân tách, tách tên và mã.                                       |
+
+---
+
+### Câu 6: Menu gọi các hàm
+
+- **Menu**: dùng `printf` để in các lựa chọn.  
+- **Đọc lựa chọn**: `scanf("%d", &choice);`.  
+- **Điều khiển**: `switch(choice)` để gọi `cau1()` … `cau5()` hoặc thoát.  
+- **Vòng lặp**: `do { … } while(choice != 0);` cho phép lặp lại menu ít nhất một lần.
+
+---
+
+## Định nghĩa và giải thích `#define`
+
+```c
+#define MAX_N    50
+#define MAX_STR  100
+#define MAX_PROD 30
+```
+
+| Thành phần        | Ý nghĩa                                                         |
+|-------------------|-----------------------------------------------------------------|
+| `#`               | Chỉ thị tiền xử lý (preprocessor directive).                   |
+| `define`          | Định nghĩa macro hằng bằng văn bản, không tạo biến runtime.     |
+| `MAX_N`,…         | Tên macro (viết in hoa theo quy ước).                          |
+| `50`, `100`, `30` | Giá trị được thay thế trực tiếp trong code.                    |
+
+**Lợi ích**:  
+- Giúp tránh “magic numbers”, dễ sửa đổi.  
+- Không chiếm bộ nhớ runtime.  
+- Phù hợp khai báo kích thước mảng tĩnh trong C89.
+
+---
+
+## Checklist nộp bài
+
+- [ ] Đã include đủ thư viện (`stdio.h`, `string.h`, `ctype.h`).  
+- [ ] Đã khai báo prototype/hàm trước `main`.  
+- [ ] Biên dịch `gcc -Wall` không còn lỗi/cảnh báo.  
+- [ ] Test các giá trị biên (n=1, n=50, chuỗi rỗng).  
+- [ ] File `danhsach.txt` được sinh đúng thư mục.  
+- [ ] Thêm comment đầu file (họ tên, lớp).  
+
+Chúc bạn hoàn thành xuất sắc bài kiểm tra lập trình C!
